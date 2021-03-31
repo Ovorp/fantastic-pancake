@@ -16,6 +16,9 @@ app.get('/api/animals', (req, res) => {
 app.get('/api/animals/:id', (req, res) => {
   let { id } = req.params;
   let idData = data.filter((val) => val.id == id);
+  if (!idData) {
+    return res.status(404).send('Id does not exist');
+  }
   res.status(200).json(idData);
 });
 
