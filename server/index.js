@@ -1,25 +1,11 @@
 const express = require('express');
-const port = 3001;
+const PORT = 5555;
 const app = express();
 const data = require('./MOCK_DATA.json');
+const sc = require('./controller/getController');
 
-app.get('/api/animals', (req, res) => {
-  let { animal } = req.query;
-  let animalData = data.filter(
-    (val) => val.animal.toLowerCase() === animal.toLowerCase()
-  );
-  if (animalData.length > 0) {
-    res.status(200).json(animalData);
-  } else res.status(200).json(data);
-});
+app.get('/api/animals', sc.getAnimals);
 
-app.get('/api/animals/:id', (req, res) => {
-  let { id } = req.params;
-  let idData = data.filter((val) => val.id == id);
-  if (!idData) {
-    return res.status(404).send('Id does not exist');
-  }
-  res.status(200).json(idData);
-});
+app.get('/api/animals/:id', sc.getAnimalsById);
 
-app.listen(port, console.log(`Server is running on port ${port}`));
+app.listen(PORT, console.log(`Server is running on port ${PORT}`));
