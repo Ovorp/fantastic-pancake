@@ -6,15 +6,15 @@
 //     latitude,
 //     url
 // }
-const data = require('./../MOCK_DATA.json');
-let id = data.length;
+const data = require('../MOCK_DATA.json');
 
 function getAnimals(req, res) {
   let { animal } = req.query;
-  let animalData = data.filter(
-    (val) => val.animal.toLowerCase() === animal.toLowerCase()
-  );
-  if (animalData.length > 0) {
+  console.log(animal);
+  if (animal) {
+    let animalData = data.filter(
+      (val) => val.animal.toLowerCase() === animal.toLowerCase()
+    );
     res.status(200).json(animalData);
   } else res.status(200).json(data);
 }
