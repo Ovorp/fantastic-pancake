@@ -2,12 +2,12 @@ const express = require('express');
 const PORT = 5555;
 const app = express();
 // const data = require('./MOCK_DATA.json');
-const sc = require('./controller/getController');
-const { deleteID } = require('./controller/testController');
+const { getAnimals, getAnimalsById } = require('./controller/getController');
+const { deleteID } = require('./controller/deleteController');
 
-app.get('/api/animals', sc.getAnimals);
+app.get('/api/animals', getAnimals);
 
-app.get('/api/animals/:id', sc.getAnimalsById);
+app.get('/api/animals/:id', getAnimalsById);
 
 app.delete('/api/animals/:id', deleteID);
 
