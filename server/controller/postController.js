@@ -8,6 +8,7 @@
 // }
 const data = require('../MOCK_DATA.json');
 let id = data.length;
+// this might not be needed
 data.forEach((val) => {
   if (val.id >= id) {
     id = val.id + 1;
