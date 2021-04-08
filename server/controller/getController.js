@@ -10,7 +10,6 @@ const data = require('../MOCK_DATA.json');
 
 function getAnimals(req, res) {
   let { animal } = req.query;
-  console.log(animal);
   if (animal) {
     let animalData = data.filter(
       (val) => val.animal.toLowerCase() === animal.toLowerCase()
